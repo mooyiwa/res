@@ -1,46 +1,12 @@
 <?php echo $__env->make('includes.site_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <body class="user">
-  <!--off canvas plugin-->
- <div id="wrapper">
-  <div class="overlay"></div>
-  
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-  <ul class="sidebar-nav">
-  <li></li>
-  <br />
-  <?php echo $__env->make('includes.accnav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-  <?php echo $__env->make('includes.user_dash', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?><br />
-
-  
-  </ul>
-  </nav>
-  <!-- /#sidebar-wrapper for off canvas --> 
+<?php echo $__env->make('includes.site_nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
   
 <!-- main content --> 
 <div id="page-content-wrapper"> 
-        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span> 
-            <span class="hamb-middle"></span> 
-            <span class="hamb-bottom"></span> 
-        </button>
-<!--off canvas plugin--> 
-
     <div class="top">
 <div class="container">
-  
-<?php echo $__env->make('includes.logo', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        
-        <!--<div class="row payoff">
-            <div class="container">
-                <div class="col-md-offset-3 col-md-6">
-                <h2 class="intro"> Real Estate Investment Done Right. </h2>
-            <span class="earn title"> Secure. Easy Plans.</span>
-           
-          </div>
-         </div>
-        </div>-->
         
         
     </div><!--class="container" -->
@@ -54,7 +20,7 @@
     <div class="row">
         <div class="col-md-12">
     
-      <?php echo $__env->make('includes.user_dash', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    
         </div>
       
         </div>
@@ -67,8 +33,13 @@
     
 <div class="mid">
 <div class="container">
-    <div class="row">
-        <div class="col-md-9">
+
+<div class="row">
+        <div class="col-md-3 aside">
+   <?php echo $__env->make('includes.user_dash', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
+        
+        <div class="col-md-9 workarea">
             
        <?php echo $__env->yieldContent('listing'); ?>
        <?php echo $__env->yieldContent('bio'); ?>
@@ -92,17 +63,17 @@
        <?php echo $__env->yieldContent('how_it_works_content'); ?> 
 
        <?php echo $__env->yieldContent('plans'); ?>
-
+       <?php echo $__env->yieldContent('inv_assets'); ?>
+       <?php echo $__env->yieldContent('lend_check'); ?>
+       <?php echo $__env->yieldContent('lend_subscribe'); ?> 
+       <?php echo $__env->yieldContent('lend_complete'); ?> 
+       
        <?php echo $__env->yieldContent('refer'); ?> 
-       <?php echo $__env->yieldContent('subscribe'); ?> 
        <?php echo $__env->yieldContent('earnings'); ?>   
         </div>
 
-        <div class="col-md-3">
-       <?php echo $__env->yieldContent('author'); ?>
-             
-                    
-        </div>
+
+       
         </div>
     
         
@@ -114,14 +85,12 @@
 
     
                    <!-- Link Bootstrap Js -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><!--for pagination-->               
-    <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>" charset="utf-8"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
+    <!-- <script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>" charset="utf-8"></script> -->
     <script src="<?php echo e(URL::asset('js/bootstrap.js')); ?>"></script>
-    <script src="<?php echo e(URL::asset('js/hamburger.js')); ?>"></script><!-- off canvas hamburger -->
 
 
 
-<script src="<?php echo e(URL::asset('js/parsely.min.js')); ?>"></script> 
 <script>
     $n = jQuery.noConflict(); 
   $n(function () {
@@ -131,16 +100,6 @@
     $n('.bs-callout-warning').toggleClass('hidden', ok);
   })
   
-});
-</script>
-
-
-<script type='text/javascript'>
-$k = jQuery.noConflict(); 
-$k(document).ready(function() {
-$k('ul.listing li:odd').css('background-color','#f8fafb');
-$k('ul.listing li:even').css('background-color','#e2e2f6');
-//$k('ul.listing li:even').css('color','snow');
 });
 </script>
 
@@ -157,8 +116,8 @@ $k('ul.listing li:even').css('background-color','#e2e2f6');
 <script>var editor = new Jodit('#editor');</script>
 
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><!--for pagination-->
-<script type="text/javascript" src="<?php echo e(URL::asset('js/jquery.js')); ?>" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
+<script type="text/javascript" src="<?php echo e(URL::asset('js/jquery-3.3.1.js')); ?>" charset="utf-8"></script>
 <script type="text/javascript" src="<?php echo e(URL::asset('js/paginator.js')); ?>" charset="utf-8"></script>
 
 <script type='text/javascript'>
@@ -190,17 +149,7 @@ $g('tbody#go').pagination();
   // alert(url);
   //jQuery("#output").html( url );
 });
-</script> 
-
-
-</div></div><!--closing divs for off canvas-->
-
-
-
-
-
-
-   
+</script>   
 
 
 

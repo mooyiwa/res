@@ -12,8 +12,10 @@ use App\Pro;
 use App\Work;
 use App\Faq;
 use App\Join;
-use App\Plan;
 use App\Account;
+use App\Nuser;
+
+use App\Mail\PaystackPaid;
 use App\Mail\SignedUp;
 use App\Mail\Recovered;
 use App\Mail\FriendSignedUp;
@@ -21,7 +23,7 @@ use App\Mail\FriendSignedUp;
 class pagesController extends Controller
 {
 
-    public function __Construct(Account $account, Post $post, Asset $asset, User $user, Pro $pro, Work $work, Faq $faq, Join $join, Plan $plan) {
+    public function __Construct(Account $account, Post $post, Asset $asset, User $user, Pro $pro, Work $work, Faq $faq, Join $join, Nuser $nuser) {
 
         $this->user = $user;
         $this->post = $post;
@@ -31,7 +33,8 @@ class pagesController extends Controller
         $this->faq = $faq;
         $this->join = $join;
         $this->pro = $pro;
-        $this->plan = $plan;
+        $this->nuser = $nuser;
+     
 
     }
     public function index(Request $request) {
@@ -43,11 +46,9 @@ class pagesController extends Controller
 
         public function userIndex(Request $request) {
 
-
-        $posts = $this->post->limit(5)->orderBy('start','desc')->get();
         $assets = $this->asset->get();
         if(session()->get('logged') != ''){
-        return view('user.index', compact('posts','assets'));
+        return view('user.index', compact('assets'));
       }
     }
 
@@ -65,6 +66,25 @@ class pagesController extends Controller
 
         return view('recover');
     }
+
+    public function benefits() {
+
+      return view('benefits');
+  }
+
+     public function faqs() {
+
+      return view('faqs');
+}
+     public function about() {
+
+      return view('about');
+}
+     public function how_it_Works() {
+
+     return view('how_it_works');
+}
+
 
     public function single($id) {
 
@@ -108,42 +128,12 @@ class pagesController extends Controller
                session()->put('first',$user->first);
                session()->put('last',$user->last);
                session()->put('who',$pass->who);
-               session()->put('upline',$pass->upline);
+             
 
                //variables for page
-                $posts = $this->post->limit(5)->orderBy('start','desc')->get();
-                $assets = $this->asset->get();
-
-              //handle expired subscriptions
-               $today = date('Y-m-d'); 
-               $exp = $this->account->where('username',session()->get('logged'))->first(); 
-               if(!empty($exp)){
-               if($today >= $exp->finish){
-
-                        $this->account->where('username',session()->get('logged'))
-                                     ->update([
-                                    
-                                    'status' => 'N'
-                                  
-                     ]);
-               }
-
-                  //handle ZERO CREDIT
-                
-               $low = $this->account->where('username',session()->get('logged'))->first(); 
-               if($low->credit == '0.00'){
-
-                        $this->account->where('username',session()->get('logged'))
-                                     ->update([
-                                    
-                                    'status' => 'N'
-                                  
-
-                     ]);
-              
-             }
-          }
-               return view('user.index', compact('user','posts','assets'));
+             
+                $assets = $this->asset->get();    
+                return view('user.index', compact('user','assets'));
 
 
             }
@@ -218,7 +208,23 @@ class pagesController extends Controller
 
     }
 
+    public function collectUsers(Request $request) { //method to collect newsletter users
 
+
+    $post = $this->nuser->insert(['user' => $request->input('user'),
+                                  'email' => $request->input('email')
+
+                           ]);
+
+                        $response = array(
+                            'status' => 'success',
+                            'msg' => 'User Subscribed. Thank you!',
+                        );
+
+                        return $response['msg'];  
+
+                    }
+    
 
     public function post(Request $request) { //method to handle job posts
       if(session()->get('logged') != ''){
@@ -291,7 +297,20 @@ class pagesController extends Controller
            $post = $this->asset->where('id',$id)->update([
              'asset' => $request->input('asset'),
              'location' => $request->input('location'),
-             'rate' => $request->input('rate'),
+
+             'rate_1' => $request->input('rate_1'),
+             'rate_2' => $request->input('rate_2'),
+             'rate_3' => $request->input('rate_3'),
+             'rate_4' => $request->input('rate_4'),
+
+             'amount_1' => $request->input('amt_1'),
+             'amount_2' => $request->input('amt_2'),
+             'amount_3' => $request->input('amt_3'),
+             'amount_4' => $request->input('amt_4'),
+
+             'type' => $request->input('type'),
+             'total_loan' => $request->input('total_loan'),
+
              'period' => $request->input('period')
            ]);
 
@@ -368,6 +387,7 @@ class pagesController extends Controller
       }
     }
 
+
       public function deletePost($id) {
 
      if(session()->get('logged') != ''){
@@ -385,23 +405,22 @@ class pagesController extends Controller
      $email = $request->input('email');
   
      $user_id = substr(number_format(time() * rand(),0,'',''),0,5);
-     $pass = "pass8008!";
+     $pass = substr(number_format(time() * rand(),0,'',''),0,4);
+    //  $pass = "pass8008!";
      $hash_pass = md5($pass);
      $secret = substr(number_format(time() * rand(),0,'',''),0,6);
      $hash_secret = md5($secret);
 
-     
-
      $create = $this->user->insert(['username' => $username,
                                     'email' => $email,
                                     'who' => 'user',
+                                    'pass'=> '$pass',
                                     'password' => $hash_pass,
                                     'user_id' => $user_id,
                                     'secret' => $secret,
                                     'hash_secret' => $hash_secret
 
                      ]);
-
 
 
       if($create){
@@ -545,16 +564,38 @@ if(session()->get('logged') != ''){
 
              $asset = $request->input('asset');
              $location = $request->input('location');
-             $rate = $request->input('rate');
+
+             $rate_1 = $request->input('rate_1');
+             $rate_2 = $request->input('rate_2');
+             $rate_3 = $request->input('rate_3');
+             $rate_4 = $request->input('rate_4');
+
              $period = $request->input('period');
-             $amt = $request->input('amt');
+
+             $amt_1 = $request->input('amt_1');
+             $amt_2 = $request->input('amt_2');
+             $amt_3 = $request->input('amt_3');
+             $amt_4 = $request->input('amt_4');
+
+             $type = $request->input('type');
+             $total_loan = $request->input('total_loan');
+
+
 
      $create = $this->asset->insert(
                      ['asset' => $asset,
                       'location' => $location,
-                      'rate' => $rate,
-                      'amount' => $amt,
-                      'period' => $period
+                      'rate_1' => $rate_1,
+                      'rate_2' => $rate_2,
+                      'rate_3' => $rate_3,
+                      'rate_4' => $rate_4,
+                      'amount_1' => $amt_1,
+                      'amount_2' => $amt_2,
+                      'amount_3' => $amt_3,
+                      'amount_4' => $amt_4,
+                      'period' => $period,
+                      'type' => $type,
+                      'total_loan' => $total_loan
                      
                      
                      ]
@@ -592,6 +633,18 @@ $attach = $this->asset->where('asset',$request->input('asset'))
         return view('user.create_asset', compact('msg','assets'));
       } 
     }
+
+         //lend new page
+         public function lendPage($id) {
+          if(session()->get('logged') != ''){
+           $assets = $this->asset->where('id',$id)->get();
+                   // first and last for current user
+        $details = $this->user->where('username',session()->get('logged'))->get();
+           return view('user.lend_check',compact('assets','details'));
+         } 
+       }
+
+
 
  public function recoverPass(Request $request) {
 
@@ -876,48 +929,39 @@ $attach = $this->asset->where('asset',$request->input('asset'))
  }
 
 
-        public function subscribeCheck() {
 
-  if(session()->get('logged') != ''){
-        // bio details / placeholders
-        $details = $this->user->where('username',session()->get('logged'))->first();
-       
-
-        //check also for running subscription or no subscription
-        $current = $this->account->where('username',session()->get('logged'))->first();
-        if(empty($current) || $current->status == 'N'){
-    return view('user.subscribe_check',compact('details','cates','current'));
-    }
-        elseif($current->status == 'Y'){
-    return view('user.subscribe_state',compact('details','current'));
-    }
-  }
-
- }
-
-        public function subscribePage(Request $request) {
+ public function lendSubscribe(Request $request) {
 
   if(session()->get('logged') != ''){
     //request vars
+      $asset = $request->input('asset');
       $first = $request->input('first');
       $last = $request->input('last');
       $email = $request->input('email');
       $amount = $request->input('amount');
+      //$rate = $request->input('rate');
+      $period = $request->input('period');
+      $location = $request->input('location');
   
 //session vars
                session()->put('amount',$amount);
                session()->put('first',$first);
                session()->put('last',$last);
                session()->put('email',$email);
-        // bio details / placeholders
+               //session()->put('rate',$rate);
+               session()->put('period',$period);  
+               session()->put('asset',$asset);     
+               session()->put('location',$location);
+        // bio details
         $details = $this->user->where('username',session()->get('logged'))->first();
       
-    return view('user.subscribe_page',compact('details'));
+    return view('user.lend_subscribe',compact('details'));
   }
 
  }
 
-         public function earnings() {
+
+      public function earnings() {
 
   if(session()->get('logged') != ''){
         // bio details / placeholders
@@ -950,7 +994,7 @@ curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt(
   $ch, CURLOPT_HTTPHEADER, [
-    'Authorization: Bearer sk_test_0702e5d1f78a11b783c82e78ed53bf3df0f39104']
+    'Authorization: Bearer sk_test_8525607149a8626b54813ebf5fd8a2a96842f4c8']
 );
 $request = curl_exec($ch);
 if(curl_error($ch)){
@@ -965,110 +1009,54 @@ if ($request) {
 if (array_key_exists('data', $result) && array_key_exists('status', $result['data']) && ($result['data']['status'] === 'success')) {
   $msg = "Transaction was successful";
   //Perform necessary action 
-  //check if first subscription
-  $first_timer = $this->account->where('username',session()->get('logged'))->first();
-  if(empty($first_timer->username)){
     //time vars
                 $start = date('Y-m-d');
-                $finish = date('Y-m-d', strtotime($start. ' + 30 days'));
-               //selective credit amount
-                if(session()->get('who') == 'reader'){
-                $credit = session()->get('amount') - 200;
-                }else{
-                 $credit = session()->get('amount'); 
-                }
+                $finish = date('Y-m-d', strtotime($start. ' + 365 days'));
 
+         //credit_outs 
+         $credit = session()->get('amount');
+         if($credit == 250000){
+             $credit_out = (0.15 * $credit) + $credit;
+         }
+         if($credit == 500000){
+          $credit_out = (0.20 * $credit) + $credit;
+        }
+         if($credit == 1000000){
+         $credit_out = (0.25 * $credit) + $credit;
+       }
+         if($credit == 5000000){
+         $credit_out = (0.30 * $credit) + $credit;
+  }
+          //calc rate
+          $rate = (($credit_out - $credit) * 100) / $credit;
          //inform accounts table
 
          $fname = session()->get('first'). ' ' . session()->get('last');
 
-         $this->account->insert(['username' => session()->get('logged'),
+         $create = $this->account->insert(['username' => session()->get('logged'),
                                     'fname' => $fname,
-                                    'credit' => $credit,
+                                    'asset' => session()->get('asset'),
+                                    'credit' => session()->get('amount'),
+                                    'rate' => $rate,
+                                    'credit_out' => $credit_out,
+                                    'period' => session()->get('period'),
                                     'start' => $start,
                                     'finish' => $finish,                    
-                                    'upline' => session()->get('upline'),
                                     'status' => 'Y',
                                     'who' => session()->get('who')
 
                      ]);
 
-      // credit upline  / add to current bonus
-         //get current upline bonus *if reader
-         if(session()->get('who') == 'reader'){
-       $getbal = $this->account->where('username',session()->get('upline'))->first();
-       $bal = $getbal->bonus;
-       //$status = $getbal->status;//upline earns only if subscription is on 
-       $plus = $bal + 200;
-
-       $this->account->where([
-
-                                   ['username','=',session()->get('upline')],
-                                   ['status','=','Y']
-
-                                 ])->update([
-                                      
-                                      'bonus' => $plus
-
-
-                                    ]
-                          ); 
-              }
-            } //first_timer
-   elseif(!empty($first_timer->username)){
-    //time vars
-                $start = date('Y-m-d');
-                $finish = date('Y-m-d', strtotime($start. ' + 30 days'));
-               //selective credit amount
-                if(session()->get('who') == 'reader'){
-                $credit = session()->get('amount') - 200;
-                }else{
-                 $credit = session()->get('amount'); 
-                }
-                
-         //inform accounts table
-
-         $fname = session()->get('first'). ' ' . session()->get('last');
-
-         $this->account->where('username',session()->get('logged'))
-                       ->update(['username' => session()->get('logged'),
-                                    'fname' => $fname,
-                                    'credit' => $credit,
-                                    'start' => $start,
-                                    'finish' => $finish,
-                                    'status' => 'Y'
-                                  
-
-                     ]);
-
-      // credit upline  / add to current bonus
-         //get current upline bonus
-       $getbal = $this->account->where('username',session()->get('upline'))->first();
-       $bal = $getbal->bonus;
-       $plus = $bal + 200;
-
-       $this->account->where([
-
-                                   ['username','=',session()->get('upline')],
-                                   ['status','=','Y']
-
-                                 ])->update([
-                                      
-                                      'bonus' => $plus
-
-
-                                    ]
-                          ); 
-
-                           
-  }
+                     if($create){
+                      \Mail::to(session()->get('email'))->send(new PaystackPaid);
+                     
+                    }  
    
 }else{
   $msg = "Transaction was unsuccessful";
 }
-    //cates
-    $cates = $this->cate->get();    
-    return view('user.subscribe_page',compact('msg','cates'));
+    //go to lend page  
+    return view('user.lend_complete',compact('msg'));
   }
 
  }
@@ -1144,7 +1132,7 @@ if (array_key_exists('data', $result) && array_key_exists('status', $result['dat
 
       if(session()->get('logged') != ''){
  
-        $plans = $this->plan->where('user_id',session()->get('logged'))->get();
+        $plans = $this->account->where('username',session()->get('logged'))->get();
         return view('user.plans', compact('plans'));
       }
  

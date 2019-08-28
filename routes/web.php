@@ -32,7 +32,11 @@ Route::post('/site/signup','pagesController@signUp');
 
 Route::get('/site/signin','pagesController@signIn');
 
-Route::get('/site/how_it_works','pagesController@howItWorks');
+Route::get('/site/benefits','pagesController@benefits');
+Route::get('/site/faqs','pagesController@faqs');
+
+Route::get('/site/about','pagesController@about');
+Route::get('/site/how_it_works','pagesController@how_It_Works');
 
 Route::get('/site/recover','pagesController@recover');
 Route::post('/site/recover','pagesController@recoverPass');
@@ -59,6 +63,8 @@ Route::get('/admin/assets','pagesController@allAssets');
 
 Route::get('/user/plans','pagesController@myPlans');
 
+// Route::get('/pdfs/{id}', 'YourController@viewPdf');
+
 /**Route::get('/user/edit/{id}',[
     'as' => 'editpage',
     'uses'=>'pagesController@editPage'
@@ -82,6 +88,8 @@ Route::post('/admin/delete_asset/{id}','pagesController@deleteAsset');
 Route::get('/user/post','pagesController@userPost');
 Route::post('/user/post','pagesController@post');
 
+Route::get('/site/newsletter_users','pagesController@collectUsers');
+
 Route::get('/user/index','pagesController@userIndex');
 Route::post('/user/index','pagesController@log_in');
 
@@ -99,6 +107,9 @@ Route::post('/admin/joinus','pagesController@updateJoinUsContent');
 
 Route::get('/user/subscribe','pagesController@subscribeCheck');
 Route::post('/user/subscribe','pagesController@subscribePage');
+
+Route::get('/user/lend/{id}','pagesController@lendPage');
+Route::post('/user/lend/{id}','pagesController@lendSubscribe');
 
 Route::get('/user/callback','pagesController@callback');
 

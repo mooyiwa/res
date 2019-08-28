@@ -1,22 +1,14 @@
 
      
   body{
-font-family: 'Maven Pro', sans-serif;
-font-family: 'Scope One', helvetica;
 font-family: 'Montserrat', sans-serif;
     color: #555;
-    font-size: 1.5em
+    font-size: 0.95em
 
 }
 body, body p{
-    /*font-family: 'Nanum Gothic', sans-serif;
-    font-family: 'Hind', sans-serif;
-    font-family: 'Alegreya', serif;
-    font-family: 'Armata', sans-serif;
-    font-family: 'Varela', sans-serif;
-    font-family: 'Roboto', sans-serif;*/
     /*font-family: 'Hind', sans-serif;*/
-    font-size: 1.5em;
+    font-size: 0.95em;
    
 }
 
@@ -48,8 +40,6 @@ p{
 .workarea{
    
     /*background: #dbe4ed;*/
-    background: url('../img/opaque_purple.png');
-    background-repeat: repeat;
     position: relative;
     top: 20px;
     min-height: 500px;
@@ -221,31 +211,32 @@ ul.sign li a:active{
 }
 
 /**dash**/
+ul.dash li img{
+    position: relative;
+    top: -3px;
+}
 ul.dash li{
     list-style: none;
     
 }
-ul.dash li img{
-  position: relative;
-  top: -3px;
-}
 ul.dash li a:link{
-    color:#333;
-    padding: 4px;
+    color:#777;
+    padding: 5px;
     display: block;
     text-decoration: none;
     font-size: 1.1em;
-
+   
     
 }
 ul.dash li a:visited{
-    color:#333;
+    color:#777;
     display: block;
 }
 ul.dash li a:hover{
-    color: purple;
-  
-    background-repeat: repeat;
+    color:#444;
+    /* background: url('../img/opaque_w.png');
+    background-repeat: repeat; */
+    background: greenyellow;
     text-decoration: none;
   
 }
@@ -253,8 +244,8 @@ ul.dash li a:active{
     color:orange;   
 }
 ul.dash li#here a{
-    color: snow;
-    background: orange;
+    color:#000;
+    background: greenyellow;
     text-decoration: none;
    
 }
@@ -311,7 +302,7 @@ p.msg{
     color: snow;
     font-size: 1.3em;
     padding: 6px;
-    color: peachpuff;
+    color: peru;
     font-weight: bold;
    
 }
@@ -527,17 +518,7 @@ div.paginator select{
 */
 
 
-/*on mobile and tab*/
-@media (max-width: 479px) {
- 
-  /*img.stt{
-    display: none;
-   }*/
-   div.mid{
-    margin-right: 25px;
-}
 
-  }
 @media (max-width: 1024px) {
 
  .container .row{
@@ -643,9 +624,9 @@ button.print{
     border: none
 }
 
-.workarea, .workarea form.form label{
+/* .workarea, .workarea form.form label{
     color: snow;
-}
+} */
 input.photo{
     background: none;
     border: none;
@@ -702,44 +683,41 @@ ul li select.min{
         } 
 
 /*nav*/
-        .nav{
-            position: relative;
-            top:-45px;
-            
-        }
-        .nav ul li{
+       
+        ul.nav li{
             list-style: none;
             display: inline;
             padding: 5px;
 
         } 
-        .nav ul li a:link{
+        ul.nav li a:link{
             color: #444;
-            padding: 5px;
+            padding: 8px;
             font-weight: bold;
             font-size: 1.0em;
-            /*border: 2px solid #333;
-            border-bottom: none;*/
+          
+            border-radius: 14px;
         } 
-        .nav ul li a:visited{
+        ul.nav li a:visited{
             color: #444;
-            border: 2px solid #333;
+          
             border-bottom: none;
         } 
-        .nav ul li a:hover{
+        ul.nav li a:hover{
             color: snow;
-            
-            background: #d91277;
-            padding: 5px;
+            background: #d91277; 
+          
         } 
-        .nav ul  a:active{
+        ul.nav  a:active{
             color: #777;
         } 
-       .nav ul li.nav-path-selected a{
+        ul.nav li.nav-path-selected a{
             color: #fff;
             background: orange;
-            background: #3A5359;
-            padding: 5px;
+            background: #99c;
+            background: #d91277;
+            padding: 8px;
+            border-radius: 14px;
         }         
 
 
@@ -780,7 +758,7 @@ label {
     } 
        
 body .top{
-            background: url('../img/topbg.jpg');
+            background: url('../img/static.jpg');
             background-repeat: no-repeat;  
             background-size: cover;
             background-position-y: -5px;
@@ -869,6 +847,7 @@ body.signup{
 
       table.listing tr td{
         border: 1px solid #eee;
+        padding-top: 15px;
     }
       
       table.listing td.apad{
@@ -918,6 +897,12 @@ body.signup{
 
       /*on mobile */
 @media (max-width: 640px) {
+
+    .col-md-3.aside{
+       position: relative;
+       top: -40px;
+       left: -20px;
+    }
   /*img.stt,
   table tr td.goto a,
   table tr td.postdate{
@@ -930,10 +915,7 @@ body.signup{
    div.payoff .container{
  margin-left: 15px;
   }
-  div.footer{
- margin-left: 30px;
- /*background: none;*/
-  }
+ 
    body {
             background: url('../img/mobile.jpg');
             background-repeat: no-repeat; 
@@ -956,7 +938,7 @@ body.signup{
               .logo img{
     position: relative;
     left: 40px;
-    top: 20px;
+   
 }
         
         div.footer .row {
@@ -1120,20 +1102,12 @@ table.earnings{
 
       }
 
-      /*h1,h2,h3,h4,h5,h6,*/
-      input[type='text'], input[type='password'],
-      input[type='email'],input[type='submit'],
-      button,textarea{
-        font-family: 'Maven Pro', sans-serif;
-      }
-
-
-ul li.parsley-required,
+/* ul li.parsley-required,
 ul li.parsley-type{
   position: relative;
   left: -35px;
 
-}
+} */
 
 textarea#textarea{
   border: none;
@@ -1260,9 +1234,9 @@ ul.star_listing{
 
 @media (min-width: 1024px) {
     .mid .container{
-        background: #fff;
+        /*background: #fff;*/
         position: relative;
-        top: -125px;
+        top: -105px;
      
         min-height: 450px;
        }  
@@ -1306,3 +1280,92 @@ ul.star_listing{
         color: #99c;
     } 
   }
+
+
+  /*ul.inv{
+      padding-left: 55px;
+    
+  }*/
+
+  ul.inv .box{
+    margin-top: 45px;
+    margin-bottom: 45px;
+    
+}
+
+table.listing td.apad{
+    font-weight: bold;
+}
+
+ul.lending li label{
+    margin-top: 15px;
+}
+
+.mid .aa{
+background: #eee;
+}
+.mid .bb{
+background: snow;
+}
+span.show_success{
+    padding: 9px;
+    background: palegreen;
+    color: purple;
+    position: relative;
+    top: -15px;
+}
+
+.mid .workarea{
+    background: #fff;
+}
+.aside{
+    position: relative;
+    left: 35px;
+    top: 45px;
+}
+
+ul li.tudd{
+    padding-top: 45px;
+}
+
+ul.mnav li a:link{
+color: snow;
+}
+ul.mnav li a:visited{
+color: snow; 
+}
+ul.mnav li a:hover{
+color: #ccc; 
+}
+ul.mnav li a:active{
+color: orangered;   
+}
+
+div.paginator{
+   position: relative;
+   left: -5px; 
+}
+
+span.inactive select{
+    display: none;
+}
+input#sub-name, input#sub-email{
+    height: 44px;
+}
+
+/*on mobile and tab*/
+@media (max-width: 479px) {
+   
+    .card{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /*img.stt{
+      display: none;
+     }*/
+     div.mid{
+      margin-right: 25px;
+  }
+  
+    }

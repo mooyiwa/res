@@ -1,13 +1,8 @@
 <?php echo $__env->make('includes.site_header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <body class="signup">
-
+<?php echo $__env->make('includes.site_nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 <div class="container">
-    <div class="row">
-        <div class="col-md-7 logo">
-            <a href="/"><img src="<?php echo e(URL::asset('img/logo.png')); ?>" /></a>
-        </div>
-    </div>
     
        <div class="row"> 
         <div class="offset7 col-md-4 login">

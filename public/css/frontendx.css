@@ -1,0 +1,156 @@
+.pic{
+    height: auto;
+    max-width: 100%;
+}
+.text-white{
+    color:white;
+}
+
+.us h2{
+    display: inline-block;
+}
+/* .footer-lists{
+    display: inline-block;
+} */
+ul{
+    margin-inline-start: 0px;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+/* how it works page*/
+.top-bg{
+    background-image: url('../img/MM-pein-illustration.png');
+    background-position: center ;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.about-h1{
+    font-size: 90px; 
+    margin-top:300px; 
+    font-weight:500; 
+    line-height:120px;
+}
+
+.hand-svg{
+    float: right;
+    height: 90px;
+}
+.mobile-view{
+    display: none;
+}
+/* end of how it works page*/
+
+
+
+/* Faq page styles*/
+.top-faq{
+    background-image: url('../img/faq-header-illustration.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 40vh;
+    margin-top: 35px
+}
+.faq-h1{
+    /* margin-top: 150px; */
+    position: relative;
+    top: 205px;
+    font-weight: 600;
+}
+/*end of faq page style*/
+.btn-des{
+    padding: 10px 50px;
+    background-image: linear-gradient(150deg, #35b1e0, #287aa7);
+    background-color: #287aa7;
+    color: white;
+    border-radius: 35px;
+}
+.btn-nav-des{
+    border-radius: 35px;
+}
+.down-bg{
+    background-image: linear-gradient(150deg, #35b1e0, #287aa7);
+    background-color: #287aa7;
+    color: white;
+    padding: 30px;
+    margin-bottom: 15px;
+}
+
+.my-card{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.ist-col{
+    margin-top: -160px;
+}
+.bene h2{
+    margin-bottom: 10px;
+}
+.bene p{
+    border-bottom: 1px solid;
+    padding-bottom: 40px;
+}
+
+
+  @media(max-width:767px){
+      .ist-col{
+          margin-top:20px;
+      }
+      .my-card{
+          margin-top: 20px;
+      }
+      .top-bg{
+          height: 60vh;
+      }
+      .about-bg{
+          background: gray;
+          opacity: 0.9;
+          height: 60vh;
+      }
+      .about-h1{
+          color: white;
+          margin-top: 50px;
+      }
+      .about-p{
+          color: white;
+      }
+      .about-bg .btn-des{
+          background: white;
+          color: #35b1e0;
+      }
+      .hand-svg{
+          float: none;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+          margin-bottom: 10px;
+      }
+      .mobile-view{
+          display: block;
+      }
+      .web-view{
+          display: none;
+      }
+
+  }
+
+
+
+  @media(max-width: 411px){
+      .about-h1{
+          margin-top: 30px;
+          font-size: 50px;
+      }
+      .footer-add{
+          margin-top: 15px;
+          /* margin-left: 30px; */
+      }
+      /* .footer-add .d-flex{
+          display: block;
+      } */
+      .footer-svg{
+          margin-left: auto;
+          margin-right: auto;
+          display: inline-flex !important;
+      }
+  }

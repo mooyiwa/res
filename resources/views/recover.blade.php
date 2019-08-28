@@ -25,7 +25,7 @@
 
 <li>
 <div class="input-group-lg">
-<button type="submit" name="submit" class="btn btn-default">Recover Pass</button>
+<button type="submit" name="submit" class="btn btn-primary">Recover Pass</button>
 </div>
 </li>
 

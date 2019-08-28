@@ -33,7 +33,7 @@ class SignedUp extends Mailable
     {
     $address = 'mail@peinmoney.com';
     $name = 'Peinmoney';
-    $subject = 'Signing Up - Peinmoney';
+    $subject = 'Welcome to Peinmoney';
     
     $details = User::where('username',$request->input('user'))->first();
 

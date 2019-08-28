@@ -1,49 +1,15 @@
 @include('includes.site_header')
 
 <body class="user">
-  <!--off canvas plugin-->
- <div id="wrapper">
-  <div class="overlay"></div>
-  
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-  <ul class="sidebar-nav">
-  <li></li>
-  <br />
-  @include('includes.accnav')
-  @include('includes.user_dash')<br />
-
-  
-  </ul>
-  </nav>
-  <!-- /#sidebar-wrapper for off canvas --> 
+@include('includes.site_nav')
   
 <!-- main content --> 
 <div id="page-content-wrapper"> 
-        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span> 
-            <span class="hamb-middle"></span> 
-            <span class="hamb-bottom"></span> 
-        </button>
-<!--off canvas plugin--> 
-
     <div class="top">
 <div class="container">
-  
-@include('includes.logo')
-        
-        <!--<div class="row payoff">
-            <div class="container">
-                <div class="col-md-offset-3 col-md-6">
-                <h2 class="intro"> Real Estate Investment Done Right. </h2>
-            <span class="earn title"> Secure. Easy Plans.</span>
-           
-          </div>
-         </div>
-        </div>-->
         
         
-    </div><!--class="container" -->
+</div><!--class="container" -->
     
         
 </div>
@@ -54,12 +20,11 @@
     <div class="row">
         <div class="col-md-12">
     
-      @include('includes.user_dash')
+    
         </div>
       
         </div>
     
-        
 </div>
 </div>
 
@@ -67,8 +32,13 @@
     
 <div class="mid">
 <div class="container">
-    <div class="row">
-        <div class="col-md-9">
+
+<div class="row">
+        <div class="col-md-3 aside">
+   @include('includes.user_dash')
+        </div>
+        
+        <div class="col-md-9 workarea">
             
        @yield('listing')
        @yield('bio')
@@ -92,17 +62,17 @@
        @yield('how_it_works_content') 
 
        @yield('plans')
-
+       @yield('inv_assets')
+       @yield('lend_check')
+       @yield('lend_subscribe') 
+       @yield('lend_complete') 
+       
        @yield('refer') 
-       @yield('subscribe') 
        @yield('earnings')   
         </div>
 
-        <div class="col-md-3">
-       @yield('author')
-             
-                    
-        </div>
+
+       
         </div>
     
         
@@ -114,14 +84,12 @@
 
     
                    <!-- Link Bootstrap Js -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><!--for pagination-->               
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}" charset="utf-8"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
+    <!-- <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}" charset="utf-8"></script> -->
     <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('js/hamburger.js') }}"></script><!-- off canvas hamburger -->
 
 
 
-<script src="{{ URL::asset('js/parsely.min.js') }}"></script> 
 <script>
     $n = jQuery.noConflict(); 
   $n(function () {
@@ -131,16 +99,6 @@
     $n('.bs-callout-warning').toggleClass('hidden', ok);
   })
   
-});
-</script>
-
-
-<script type='text/javascript'>
-$k = jQuery.noConflict(); 
-$k(document).ready(function() {
-$k('ul.listing li:odd').css('background-color','#f8fafb');
-$k('ul.listing li:even').css('background-color','#e2e2f6');
-//$k('ul.listing li:even').css('color','snow');
 });
 </script>
 
@@ -157,8 +115,8 @@ $k('ul.listing li:even').css('background-color','#e2e2f6');
 <script>var editor = new Jodit('#editor');</script>
 
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script><!--for pagination-->
-<script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}" charset="utf-8"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
+<script type="text/javascript" src="{{ URL::asset('js/jquery-3.3.1.js') }}" charset="utf-8"></script>
 <script type="text/javascript" src="{{ URL::asset('js/paginator.js') }}" charset="utf-8"></script>
 
 <script type='text/javascript'>
@@ -190,17 +148,7 @@ $g('tbody#go').pagination();
   // alert(url);
   //jQuery("#output").html( url );
 });
-</script> 
-
-
-</div></div><!--closing divs for off canvas-->
-
-
-
-
-
-
-   
+</script>   
 
 
 

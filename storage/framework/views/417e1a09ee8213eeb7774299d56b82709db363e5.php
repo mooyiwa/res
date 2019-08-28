@@ -8,7 +8,7 @@
 
 <li><span class='msg'><?php echo e(@$msg); ?></span> </li>
 
-<li><h4 style="padding-top: 10px;"> Personal Details </h4></li>
+<li><h5 style="padding-top: 10px;"> Personal Details </h5></li>
 
 <li>
  <div class="input-group-lg">
@@ -38,7 +38,7 @@
  </div>
 </li>
 
-<li><h4 style="padding-top: 10px;"> Next of Kin Details </h4></li>
+<li><h5 style="padding-top: 10px;"> Next of Kin Details </h5></li>
 
  <li>
   <div class="input-group-lg">
@@ -61,7 +61,7 @@
  </div>
 </li> 
 
-<li><h4 style="padding-top: 10px;"> Bank Details </h4></li>
+<li><h5 style="padding-top: 10px;"> Bank Details </h5></li>
 
 <li>
  <div class="input-group-lg">
@@ -88,7 +88,7 @@
 
  <li>
   <div class="input-group input-group-lg">
-<button type="submit" name="submit" class="btn btn-default">Update Bio</button>
+<button type="submit" name="submit" class="btn btn-primary">Update Bio</button>
  </div>
 </li> 
 

@@ -15,7 +15,7 @@
   <input type="password" name="pass" class="form-control" placeholder="Password">
 </div></li>
 
-<li><div class="input-group-lg"> <button type="submit" name="submit" class="btn btn-default">Sign in</button></div></li><br />
+<li><div class="input-group-lg"> <button type="submit" name="submit" class="btn btn-primary">Sign in</button></div></li><br />
 <li><span style="margin-top: 10px;">New User? <a href="/site/signup">Sign Up!</a></span></li>
 <li><span style="margin-top: 10px"><a href="/site/recover">Forgot password?</a></span></li>
 

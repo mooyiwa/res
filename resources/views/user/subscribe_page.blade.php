@@ -48,7 +48,7 @@
 
  <li>
  <div class="input-group-lg">
-<button class="btn btn-secondary" type="button" onclick="validateAndPay()"> Pay Subscription </button>
+<button class="btn btn-secondary" type="button" onclick="validateAndPay()"> Pay </button>
  </div>
 </li>       
         

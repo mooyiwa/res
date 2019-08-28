@@ -1,45 +1,14 @@
 @include('includes.site_header')
-
+@include('includes.site_nav')
 <body class="user" onload="startUp()">
-  <!--off canvas plugin-->
- <div id="wrapper">
-  <div class="overlay"></div>
-  
-  <!-- Sidebar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-  <ul class="sidebar-nav">
-  <li></li> 
-  @include('includes.accnav')
-  @include('includes.user_dash')
-  </ul>
-  </nav>
-  <!-- /#sidebar-wrapper for off canvas --> 
-    
+
 <!-- main content --> 
 <div id="page-content-wrapper"> 
-        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
-            <span class="hamb-top"></span> 
-            <span class="hamb-middle"></span> 
-            <span class="hamb-bottom"></span> 
-        </button>
-<!--off canvas plugin--> 
 
-    <div class="top">
+<div class="top">
 <div class="container">
-  
-@include('includes.logo')
-        
-        <div class="row payoff">
-            <div class="container">
-                <div class="col-md-offset-3 col-md-6">
-            <h2 class="intro"> Real Estate Investment Done Right. </h2>
-            <span class="earn title"> Secure. Easy Plans.</span>
-          </div>
-         </div>
-        </div>
-        
-        
-    </div><!--class="container" -->
+
+</div><!--class="container" -->
     
         
 </div>
@@ -49,28 +18,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-      @include('includes.accnav')
+      
         </div>
       
         </div>
-    
-        
+      
 </div>
 </div>
-
 
     
 <div class="mid">
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
-            
-       @yield('subscribe')    
+        <div class="col-md-3 aside">
+        @include('includes.user_dash')   
+         
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-9 workarea">
 
-           
+        @yield('lend_subscribe')  
                     
         </div>
         </div>
@@ -82,14 +49,10 @@
 
 @include('includes.footer')
     
-                   <!-- Link Bootstrap Js -->
+    <!-- Link Bootstrap Js -->
     <!--<script type="text/javascript" src="{{ URL::asset('js/jquery-3.2.1.min.js') }}" charset="utf-8"></script>-->
     <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}" charset="utf-8"></script>
     <script src="{{ URL::asset('js/bootstrap.js') }}"></script>
-    <script src="{{ URL::asset('js/jquery.validate.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/fvalidscript.js') }}"></script>
-    <script src="{{ URL::asset('js/hamburger.js') }}"></script><!-- off canvas hamburger -->
-    <script src="{{ URL::asset('js/validatr.js') }}"></script>
 
 
 <script type='text/javascript'>
@@ -101,30 +64,14 @@ $k('ul.listing li:even').css('color','snow');
 });
 </script> 
 
-
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-<script type="text/javascript">
-
-//<![CDATA[
- bkLib.onDomLoaded(function() {
-       //new nicEditor().panelInstance('textarea');
-      //new nicEditor({fullPanel : false}).panelInstance('area2');
-       //new nicEditor({iconsPath : '../nicEditorIcons.gif'}).panelInstance('area3');
-       new nicEditor({buttonList : ['ol','ul','fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','left','center','right','justify','bgcolor','indent','outdent','forecolor','link']}).panelInstance('textarea');
-       //new nicEditor({maxHeight : 100}).panelInstance('area5');
- });
- //]]>
- </script>
-
-</div></div><!--closing divs for off canvas-->
-
+</div>
 
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
     // change this to your public key so you 
     // will no more be prompted
-    var public_key = 'pk_test_7ff73ebbee8baf48f390f513300b347951a55dac';
+    var public_key = 'pk_test_4b64c7acbc5bb897c2397bb8dee0cad7370283ed';
     
     /*
      * Start up
@@ -308,11 +255,11 @@ $k('ul.listing li:even').css('color','snow');
  
   </script> 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $s = jQuery.noConflict(); 
         jQuery(function ($) {
         $s('form').validatr(); 
     });
-  </script>
+  </script> -->
 </body>
 </html>

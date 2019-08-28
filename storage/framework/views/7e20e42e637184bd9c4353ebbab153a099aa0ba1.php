@@ -19,7 +19,7 @@
 
 
  <li><div class="input-group-lg">
-<button type="submit" name="submit" class="btn btn-default">Change</button> 
+<button type="submit" name="submit" class="btn btn-primary">Change</button> 
 </div>
 </li>
 

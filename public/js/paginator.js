@@ -43,7 +43,7 @@
 
 	var startPage = 1; // start page
 
-	var itemsPerPage = 10; // no. of items you want to show on one page
+	var itemsPerPage = 5; // no. of items you want to show on one page
 
 	var firstPageSymbol = '<<'; // to indicate First Page
 
@@ -73,7 +73,7 @@
     
     var textSelectNoItems = ''; // text for above option. You can change it to 'Change No. of tag/page' or anything you like. The above option needs to turned on for this.
 
-	var paginatorValues = Array(10,15,20,25); // list of values for above option (enableSelectNoItems).
+	var paginatorValues = Array(5,10,15,20); // list of values for above option (enableSelectNoItems).
 
     var anchorLink = 'javascript:void(0);'; // if you want to change href of the paginator anchor text (links for page) to '#' or to something else. As # is append on the address bar upon clicking I used javascript:void(); which is clean.
     
