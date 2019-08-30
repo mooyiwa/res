@@ -13,8 +13,8 @@
        <a href="/user/index"> <img src="{{ URL::asset('img/go.png') }}" /> Open Investments </a></li>
        <li <?php if ($currentPage =='plans') {echo 'id="here"';} ?>>
        <a href="/user/plans"> <img src="{{ URL::asset('img/inv.png') }}" /> My Investments </a></li>
-       <li <?php if ($currentPage =='#') {echo 'id="here"';} ?>>
-       <a href="#"> <img src="{{ URL::asset('img/hist.png') }}" /> Account History </a></li>
+       <!-- <li <?php //if ($currentPage =='#') {echo 'id="here"';} ?>>
+       <a href="#"> <img src="{{ URL::asset('img/hist.png') }}" /> Account History </a></li> -->
        
 
 

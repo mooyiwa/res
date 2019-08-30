@@ -63,6 +63,15 @@ Route::get('/admin/assets','pagesController@allAssets');
 
 Route::get('/user/plans','pagesController@myPlans');
 
+Route::get('/site/carousel','pagesController@carousel');
+
+Route::get('/user/signout','pagesController@signOut');
+
+// Route::get('/signout', function () {
+//     //return redirect()->route('index');
+//     return redirect()->route('index');
+// });
+
 // Route::get('/pdfs/{id}', 'YourController@viewPdf');
 
 /**Route::get('/user/edit/{id}',[

@@ -116,6 +116,7 @@
     
     
 </div>
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <script>
     $(window).resize(function(){
@@ -136,4 +137,3 @@
 </script>
 
 
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

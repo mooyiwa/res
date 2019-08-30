@@ -34,7 +34,15 @@ class PaystackPaid extends Mailable
         $name = 'Peinmoney';
         $subject = 'Your Peinmoney Investment';
 
-        $details = Account::where('username',session()->get('logged'))->first();
+        //today / start
+        $start = date('Y-m-d');
+
+        $details = Account::where([
+            ['username',session()->get('logged')],
+            ['asset',session()->get('asset')],
+            ['credit',session()->get('amount')],
+            ['start',$start],
+            ])->first();
 
         return $this->markdown('emails.paystacked', compact('details'))
         ->from($address, $name)

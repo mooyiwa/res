@@ -113,3 +113,8 @@
 
 
 <script src="<?php echo e(URL::asset('js/bootstrap.js')); ?>"></script>
+
+
+
+</body>
+</html>

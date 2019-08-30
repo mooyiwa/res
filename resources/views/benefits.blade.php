@@ -1,6 +1,6 @@
 @include('includes.site_header')
 @include('includes.site_nav')
-{{-- @include('layouts.home') --}}
+
 
 <div class="container mt-5">
     <div class="text-center mb-5">
@@ -116,6 +116,7 @@
     
     
 </div>
+@include('includes.footer')
 
 <script>
     $(window).resize(function(){
@@ -136,4 +137,3 @@
 </script>
 
 
-@include('includes.footer')

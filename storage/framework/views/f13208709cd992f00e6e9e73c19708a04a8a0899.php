@@ -51,7 +51,7 @@
 </div>
 
 
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 
     <!-- Link Bootstrap Js -->
     <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> 
@@ -120,7 +120,4 @@ $g('tbody#go').pagination();
 </script>   
 
 
-
-
-</body>
-</html>
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -38,12 +38,16 @@ class pagesController extends Controller
 
     }
     public function index(Request $request) {
-        session()->flush();
+        //session()->flush();
 //get assets
         $assets = $this->asset->get();
         return view('index', compact('assets'));
     }
-
+    public function signOut() {
+      
+      session()->flush();
+      return redirect()->action('pagesController@index');
+  }
         public function userIndex(Request $request) {
 
         $assets = $this->asset->get();
@@ -128,7 +132,7 @@ class pagesController extends Controller
                session()->put('first',$user->first);
                session()->put('last',$user->last);
                session()->put('who',$pass->who);
-             
+
 
                //variables for page
              
@@ -179,14 +183,9 @@ class pagesController extends Controller
 
                                     ]
                           );
-   // update details in posts table
-      $update2 = $this->post->where('auth',session()->get('logged'))
-                            ->update(['fname' => $request->input('first') . ' '. $request->input('last')
+  
 
-                                    ]
-                          );  
-
-      if($update || $update2){
+      if($update){
         $msg = 'Bio Updated!';
               
         // bio details / placeholders
@@ -403,6 +402,15 @@ class pagesController extends Controller
 
      $username = $request->input('user');
      $email = $request->input('email');
+     $first = $request->input('first');
+     $last = $request->input('last');
+     $phone = $request->input('phone');
+
+     //sessionise the user
+     session()->put('logged',$username);
+     session()->put('first',$first);
+     session()->put('last',$last);
+     session()->put('who','user');
   
      $user_id = substr(number_format(time() * rand(),0,'',''),0,5);
      $pass = substr(number_format(time() * rand(),0,'',''),0,4);
@@ -411,24 +419,38 @@ class pagesController extends Controller
      $secret = substr(number_format(time() * rand(),0,'',''),0,6);
      $hash_secret = md5($secret);
 
+     //chk for existing user
+     $exist = $this->user->where('username',$username)->first();
+     if($exist){
+      $msg = 'Username has been taken';
+      return view('signup', compact('msg'));
+    }
+     if(!$exist){
      $create = $this->user->insert(['username' => $username,
                                     'email' => $email,
+                                    'first' => $first,
+                                    'last' => $last,
+                                    'phone' => $phone,
                                     'who' => 'user',
-                                    'pass'=> '$pass',
+                                    'pass'=> $pass,
                                     'password' => $hash_pass,
                                     'user_id' => $user_id,
                                     'secret' => $secret,
                                     'hash_secret' => $hash_secret
 
                      ]);
+                    }
+
 
 
       if($create){
         \Mail::to($request->input('email'))->send(new SignedUp);
-        $msg = "Account created! See your email.";
+       
       }
 
-     return view('signup', compact('msg')); // return signup view
+     //return view('signup', compact('msg')); 
+     $assets = $this->asset->get();    
+     return view('user.index', compact('user','assets'));
 
   }
 
@@ -440,6 +462,14 @@ class pagesController extends Controller
      }
 
     }
+
+    public function carousel() {
+
+      
+        return view('carousel');
+      
+ 
+     }
 
 
        public function changePass(Request $request) {

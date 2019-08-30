@@ -47,7 +47,7 @@
 </div>
 
 
-@include('includes.footer')
+
     
     <!-- Link Bootstrap Js -->
     <!--<script type="text/javascript" src="{{ URL::asset('js/jquery-3.2.1.min.js') }}" charset="utf-8"></script>-->
@@ -261,5 +261,4 @@ $k('ul.listing li:even').css('color','snow');
         $s('form').validatr(); 
     });
   </script> -->
-</body>
-</html>
+  @include('includes.footer')

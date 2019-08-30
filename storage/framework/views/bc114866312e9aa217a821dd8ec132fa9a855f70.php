@@ -6,7 +6,7 @@
 <ul class="inv"><div class="row">
 <?php $__currentLoopData = $assets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $asset): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
 
-<div class="col-md-4" style="width: 18rem; margin-top:25px;">
+<div class="col-md-4" style="margin-top:25px;">
 <div class="card">
 <a href="/user/lend/<?php echo e($asset->id); ?>"><img src="/photos/<?php echo e($asset->asset_id); ?>" class="card-img-top" alt="..."></a>
   <div class="card-body">
@@ -21,6 +21,7 @@
     <a href="/user/lend/<?php echo e($asset->id); ?>" class="btn btn-primary">Start Lending</a>
   </div>
 </div>
+
 </div>
 
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

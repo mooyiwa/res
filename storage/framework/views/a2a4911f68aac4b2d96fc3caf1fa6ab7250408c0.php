@@ -9,7 +9,7 @@
 <div class="container">
         
         
-    </div><!--class="container" -->
+</div><!--class="container" -->
     
         
 </div>
@@ -25,7 +25,6 @@
       
         </div>
     
-        
 </div>
 </div>
 
@@ -81,7 +80,7 @@
 </div>
 
 
-<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 
     
                    <!-- Link Bootstrap Js -->
@@ -152,7 +151,4 @@ $g('tbody#go').pagination();
 </script>   
 
 
-
-
-</body>
-</html>
+<?php echo $__env->make('includes.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

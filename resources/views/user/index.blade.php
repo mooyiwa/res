@@ -8,7 +8,7 @@
 <ul class="inv"><div class="row">
 @foreach($assets as $asset)                      
 
-<div class="col-md-4" style="width: 18rem; margin-top:25px;">
+<div class="col-md-4" style="margin-top:25px;">
 <div class="card">
 <a href="/user/lend/{{ $asset->id }}"><img src="/photos/{{ $asset->asset_id }}" class="card-img-top" alt="..."></a>
   <div class="card-body">
@@ -23,6 +23,7 @@
     <a href="/user/lend/{{ $asset->id }}" class="btn btn-primary">Start Lending</a>
   </div>
 </div>
+
 </div>
 
 @endforeach

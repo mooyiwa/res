@@ -897,7 +897,15 @@ body.signup{
 
       /*on mobile */
 @media (max-width: 640px) {
-
+     /* .my-card{
+         padding-left: 35px;
+         
+     } */
+     .card{
+         margin-left: auto;
+         margin-right: auto;
+         display: block;
+     }
     .col-md-3.aside{
        position: relative;
        top: -40px;
@@ -916,7 +924,7 @@ body.signup{
  margin-left: 15px;
   }
  
-   body {
+   body.signup {
             background: url('../img/mobile.jpg');
             background-repeat: no-repeat; 
             background-attachment: fixed;
@@ -1368,4 +1376,10 @@ input#sub-name, input#sub-email{
       margin-right: 25px;
   }
   
+    }
+
+    .pad div.card-body{
+        margin-left: 20px;
+        margin-top: 15px;
+        
     }

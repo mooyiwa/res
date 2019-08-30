@@ -5,9 +5,9 @@
 <p>Your Username is : <b>{{$details->username}}</b></p>
 <p>Your password is: <b>{{$details->pass}}</b></p>
 <p>Your <b>secret password </b> for password recovery purposes is: {{$details->secret}}</p>
-<p>*Please change your password to a more secure one once.</p>
+<p>*Please change your password to a more secure one.</p>
 
-@component('mail::button', ['url' => 'https://peinmoney.com'])
+@component('mail::button', ['url' => 'https://peinmoney.com/site/signin'])
 Sign In
 @endcomponent
 

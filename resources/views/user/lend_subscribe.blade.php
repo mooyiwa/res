@@ -1,8 +1,8 @@
 @extends('layouts.subscribe')
 
 @section('lend_subscribe')
-          
-<form class="form" id="pay-form">
+
+ <form class="form" id="pay-form">
         <div id="alert-holder"></div>
         <div class="text-center">
         </div>
@@ -85,5 +85,7 @@
     </ul>
  
  </form>
+  
+
 
  @stop

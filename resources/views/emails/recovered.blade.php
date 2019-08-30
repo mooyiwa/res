@@ -5,7 +5,7 @@ A temporary password has been generated for you. Change the password to a desire
 <p>Your Username is : <b>{{$details->username}}</b></p>
 <p>Your recovery password is: <b>{{$details->passcode}}</b></p>
 
-@component('mail::button', ['url' => 'http://peinmoney.com'])
+@component('mail::button', ['url' => 'http://peinmoney.com/signin'])
 Sign In
 @endcomponent
 

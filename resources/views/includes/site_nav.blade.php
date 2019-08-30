@@ -36,10 +36,13 @@
   <div class="dropdown-menu">
     <!-- Dropdown menu links -->
     <p style='padding-left: 22px;'>User: {{ session()->get('logged') }}</p>
-    <a class="dropdown-item" href="/user/avatar">Attach Avatar</a>
 
+    <li <?php if ($currentPage =='bio') {echo 'id="here"';} ?>>
+        <a href="/user/bio" class="dropdown-item"> Update Bio</a>
+        <a href="/user/index" class="dropdown-item"> Open Investments </a>
+        <a class="dropdown-item" href="/user/plans"> My Investments </a>
         <a class="dropdown-item" href="/user/pass">Change Password</a>
-        <a class="dropdown-item" href="/">Sign Out</a>
+        <a class="dropdown-item" href="/user/signout">Sign Out</a>
   </div>
   </div>
    
@@ -58,7 +61,7 @@
        <a class="dropdown-item" href="/admin/createAsset">Create Asset</a>
        <a class="dropdown-item" href="/admin/assets">Manage Assets</a>
        <a class="dropdown-item" href="/user/pass">Change Password</a>
-       <a class="dropdown-item" href="/">Sign Out</a>
+       <a class="dropdown-item" href="/signout">Sign Out</a>
 
  </div>
  </div>

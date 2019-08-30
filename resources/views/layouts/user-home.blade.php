@@ -80,7 +80,7 @@
 </div>
 
 
-@include('includes.footer')
+
 
     
                    <!-- Link Bootstrap Js -->
@@ -151,7 +151,4 @@ $g('tbody#go').pagination();
 </script>   
 
 
-
-
-</body>
-</html>
+@include('includes.footer')

@@ -14,6 +14,15 @@
 <input type='text' name='user' class="form-control" placeholder="username" required="" />
  </div>
 </li> -->
+<li><div class="input-group-lg">
+  {!! Form::text('first','',array('required','class' => 'form-control', 'placeholder' => 'First name' )) !!}
+ </div>
+</li>
+
+<li><div class="input-group-lg">
+  {!! Form::text('last','',array('required','class' => 'form-control', 'placeholder' => 'Last name' )) !!}
+ </div>
+</li>
 
 <li><div class="input-group-lg">
   {!! Form::text('user','',array('required','class' => 'form-control', 'placeholder' => 'username' )) !!}
@@ -22,6 +31,11 @@
 
 <li><div class="input-group-lg">
   {!! Form::text('email','',array('required','class' => 'form-control', 'placeholder' => 'e-mail' )) !!}
+ </div>
+</li>
+
+<li><div class="input-group-lg">
+  {!! Form::text('phone','',array('required','class' => 'form-control', 'placeholder' => 'phone' )) !!}
  </div>
 </li>
 

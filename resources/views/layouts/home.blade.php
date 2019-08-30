@@ -54,7 +54,7 @@
 </div>
 
 
-@include('includes.footer')
+
     
 
 <script src="{{ URL::asset('js/bootstrap.js') }}"></script>    
@@ -90,5 +90,6 @@ $k('ul.listinge li').css('padding','12px');
 </script>  -->
 
 </div>
-</body>
-</html>
+
+@include('includes.footer')
+
